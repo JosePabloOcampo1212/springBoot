@@ -1,5 +1,7 @@
 package com.javamaster.springmvc.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.Set;
 
 @Table(name = "factura_tienda")
 @Entity
+@Data
 public class FacturaTienda extends BaseEntity implements Factura {
 
 

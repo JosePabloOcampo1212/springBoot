@@ -5,6 +5,7 @@ import com.javamaster.springmvc.model.Especialidad;
 
 import com.javamaster.springmvc.model.Mascota;
 import com.javamaster.springmvc.repository.MascotaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +23,18 @@ public class IndexController {
 //    public String allMascotas(){
 //        return "mascotas";
 //    }
-
+    @Autowired
+    EspecialidadImp especialidadImp = new EspecialidadImp();
     // metodo que se encarga de cargar los datos de mascotas del hospital en pantalla
 
     @RequestMapping("/allEspecialiades")
     public String listMascotas(Model model){
-        EspecialidadImp especialidadImp = new EspecialidadImp();
         List<Especialidad> especialidades = especialidadImp.findAll();
-        System.out.println(especialidades);
+        for (Especialidad i: especialidades) {
+            System.out.println(i.getName());
+        }
         model.addAttribute("especialidades",especialidades);
-        return "mascotas";
+        return "especialidades";
     }
     // metodo que se encarga de cargar los datos de servicios del hospital en pantalla
     @RequestMapping("/servicios")

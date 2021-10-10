@@ -1,12 +1,15 @@
 package com.javamaster.springmvc.model;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Table(name = "producto_comprado")
 @Entity
+@Data
 public class ProductoComprado extends BaseEntity {
 
 	@Column(name = "fecha")

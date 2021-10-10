@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <table th:object="${userList}" id="userTable" border="1">
+        <tr th:each="user :${userList}">
+            <td  th:text="${user.getName()}"></td>
+            <td  th:text="${user.getEmail()}"></td>
+        </tr>
+    </table>
+    </head>

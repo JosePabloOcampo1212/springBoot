@@ -1,9 +1,12 @@
 package com.javamaster.springmvc.model;
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Table(name = "producto")
 @Entity
+@Data
 public class Producto extends EntidadNombrada {
 	@Column(name = "descripcion")
 	@NotEmpty

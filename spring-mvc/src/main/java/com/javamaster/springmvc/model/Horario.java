@@ -1,10 +1,13 @@
 package com.javamaster.springmvc.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Table(name = "horario")
 @Entity
+@Data
 public class Horario extends BaseEntity{
 
 	@Column(name = "hora_inicio")

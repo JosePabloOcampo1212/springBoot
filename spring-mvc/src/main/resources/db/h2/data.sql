@@ -52,9 +52,6 @@ INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
 
-INSERT INTO especialidad VALUES (1, 'Leo');
-INSERT INTO especialidad VALUES (2, 'Basil');
-INSERT INTO especialidad VALUES (3, 'Rosy');
-INSERT INTO especialidad VALUES (4, 'Jewel');
-INSERT INTO especialidad VALUES (5, 'Iggy');
-INSERT INTO especialidad VALUES (6, 'George');
+INSERT INTO especialidad VALUES (1, 'Cardiologo');
+INSERT INTO especialidad VALUES (2, 'Audiologo');
+INSERT INTO especialidad VALUES (3, 'Ginecologo');

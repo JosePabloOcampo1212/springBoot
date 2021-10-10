@@ -1,9 +1,12 @@
 package com.javamaster.springmvc.model;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Table(name = "hospital")
 @Entity
+@Data
 public class Hospital extends BaseEntity {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tienda_id", insertable=false, updatable=false)

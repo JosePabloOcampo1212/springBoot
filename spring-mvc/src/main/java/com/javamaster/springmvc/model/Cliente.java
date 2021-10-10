@@ -1,11 +1,13 @@
 package com.javamaster.springmvc.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Table(name = "cliente")
 @Entity
-
+@Data
 public class Cliente extends Persona {
 
 	@ManyToOne(fetch = FetchType.LAZY)

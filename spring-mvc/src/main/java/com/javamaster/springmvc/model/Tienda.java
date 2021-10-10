@@ -2,12 +2,14 @@ package com.javamaster.springmvc.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Table(name = "tienda")
 @Entity
-
+@Data
 public class Tienda extends BaseEntity {
 	@OneToOne(fetch= FetchType.LAZY, mappedBy="tienda")
 	private Hospital hospital;
