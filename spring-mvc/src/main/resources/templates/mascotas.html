@@ -7,29 +7,59 @@
     <title>Mascotas</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark">
         
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a href="" style="color: black;"></a>
-                <a class="nav-link" href="#">Home </a>
-              </li>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a href="" style="color: black;"></a>
+            <a class="nav-link" href="#">Home </a>
+          </li>
+        
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Mascotas </a>
             
-        </ul>
-        <ul>
-            <li class="nav-item active">
-                <a class="nav-link" href="/allMascotas">Mascotas </a>
-                
-              </li>
-        </ul>
-        <ul>
-            <li class="nav-item active">
-                <button type="button" class="btn btn-dark">Dark</button>
-                
-              </li>
-        </ul>
-    
-    </nav>
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Servicios </a>
+            
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Clientes_Mascotas </a>
+            
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Clientes_Mascotas </a>
+            
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Mascotas_veterinario </a>
+            
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Facturas_clientes </a>
+            
+          </li>
+    </ul>
+    <ul>
+        <li class="nav-item active">
+            <a class="nav-link" href="/allMascotas">Prodctos </a>
+            
+          </li>
+    </ul>
+
+</nav>
     <br>
     <br>
     <table class="table">
@@ -42,11 +72,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="Especialidad: ${mascotas}">
-            <th scope="row" th:text="${mascota.id}"></th>
-            <td th:text="${mascota.id}"></td>
-            <td th:text="${mascota.nombre}"></td>
-            <td th:text="${mascota.nombre}"></td>
+          <tr th:each="Especialidad: ${especialidades}">
+            <th scope="row" th:text="${Especialidad.id}"></th>
+            <td ></td>
+            <td th:text="${Especialidad.nombre}"></td>
+            <td ></td>
           </tr>
 
         </tbody>

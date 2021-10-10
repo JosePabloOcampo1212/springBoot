@@ -15,7 +15,7 @@ public class Horario extends BaseEntity{
 	@NotEmpty
 	private String horaFin;
 
-	@Column(name = "hora_fin")
+	@Column(name = "dias_laborales")
 	@NotEmpty
 	private String diasLaborales;
 

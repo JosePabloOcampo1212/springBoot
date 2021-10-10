@@ -42,7 +42,7 @@ public abstract class Persona extends BaseEntity {
 	@NotEmpty
 	private String direccion;
 
-	@Column(name = "direccion")
+	@Column(name = "telefono")
 	@NotEmpty
 	private String telefono;
 

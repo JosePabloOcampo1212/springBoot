@@ -27,7 +27,15 @@ public class IndexController {
     public String listMascotas(Model model){
         EspecialidadImp especialidadImp = new EspecialidadImp();
         List<Especialidad> especialidades = especialidadImp.findAll();
+        System.out.println(especialidades);
         model.addAttribute("especialidades",especialidades);
         return "mascotas";
     }
+
+    @RequestMapping("")
+    public String servicios(Model model){
+
+        return "servicios";
+    }
+
 }

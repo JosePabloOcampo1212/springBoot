@@ -10,4 +10,6 @@ import java.util.List;
 public class Especialidad extends EntidadNombrada{
     @ManyToMany(mappedBy="especialidades")
     private List<Veterinario> veterinarios;
+
+
 }
