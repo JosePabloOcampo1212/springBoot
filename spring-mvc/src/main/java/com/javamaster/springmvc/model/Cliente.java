@@ -23,32 +23,33 @@ public class Cliente extends Persona {
 
 	public Hospital getHospital() {
 		return hospital;
-	}
+	} //get del atributo hospital
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
-	}
+	} //set de hospital
 
 	public Set<Mascota> getMascotas() {
 		return mascotas;
-	}
+	}// set de mascota
 
 	public void setMascotas(Set<Mascota> mascotas) {
 		this.mascotas = mascotas;
-	}
+	} // set de la lista de mascotas
 
-	public Set<FacturaTienda> getFacturasTiendas() {
+	public Set<FacturaTienda> getFacturasTiendas() {  // ge de las fACTURAS DE una tienda
 		return facturasTiendas;
 	}
 
 	public void setFacturasTiendas(Set<FacturaTienda> facturasTiendas) {
 		this.facturasTiendas = facturasTiendas;
-	}
+	} // set de facturas tienda
 
 	public Set<FacturaHospital> getFacturasHospital() {
 		return facturasHospital;
-	}
+	} // get facturas hsoptal
 
+	//set facturas hospital
 	public void setFacturasHospital(Set<FacturaHospital> facturasHospital) {
 		this.facturasHospital = facturasHospital;
 	}

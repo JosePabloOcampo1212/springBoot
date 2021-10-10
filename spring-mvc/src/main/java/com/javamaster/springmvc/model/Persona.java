@@ -46,7 +46,7 @@ public abstract class Persona extends BaseEntity {
 	@NotEmpty
 	private String telefono;
 
-
+// seter y geters de los atrubutos de persoma
 	public String getNombre() {
 		return nombre;
 	}

@@ -19,6 +19,8 @@ public class Veterinario extends Persona{
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinario", fetch = FetchType.EAGER)
 	private Set<Horario> horarios;
 
+	// seters y getters de los atributos de veterinario
+
 	public Hospital getHospital() {
 		return hospital;
 	}

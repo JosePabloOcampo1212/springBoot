@@ -31,14 +31,17 @@ public abstract class EntidadNombrada extends BaseEntity {
 	@Column(name = "nombre")
 	private String nombre;
 
+	// devuele el nombre
 	public String getName() {
 		return this.nombre;
 	}
 
+		// setea el nombre
 	public void setName(String name) {
 		this.nombre = name;
 	}
 
+	//to string del nombre
 	@Override
 	public String toString() {
 		return this.getName();

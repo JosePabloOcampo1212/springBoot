@@ -35,14 +35,17 @@ public abstract class BaseEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	// get donde devuelve el id
 	public Integer getId() {
 		return id;
 	}
 
+	// set de id
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	// metodo de verificacion si es un nuevo id
 	public boolean isNew() {
 		return this.id == null;
 	}

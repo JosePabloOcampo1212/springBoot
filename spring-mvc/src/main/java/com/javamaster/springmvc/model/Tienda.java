@@ -14,7 +14,7 @@ public class Tienda extends BaseEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tienda", fetch = FetchType.EAGER)
 	private Set<Producto> productos;
-
+// setter y getter de los atributos de tienda
 	public Hospital getHospital() {
 		return hospital;
 	}

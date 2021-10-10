@@ -25,34 +25,35 @@ public class Mascota extends EntidadNombrada {
 	@JoinColumn(name = "cliente_id", insertable=false, updatable=false)
 	private Hospital cliente;
 
+	// get tipo
 	public String getTipo() {
 		return tipo;
 	}
-
+// setea el tipo
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+// devuelve la fecha
 	public Date getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
-
+// setea la fecha
 	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
-
+// devuelve el expediente
 	public Set<Expediente> getExpedientes() {
 		return expedientes;
 	}
-
+// setea el expediente
 	public void setExpedientes(Set<Expediente> expedientes) {
 		this.expedientes = expedientes;
 	}
-
+// devuelve el hospital
 	public Hospital getCliente() {
 		return cliente;
 	}
-
+// setea el clietne
 	public void setCliente(Hospital cliente) {
 		this.cliente = cliente;
 	}

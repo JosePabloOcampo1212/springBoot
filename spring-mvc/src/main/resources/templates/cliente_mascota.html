@@ -7,73 +7,73 @@
     <title>Mascotas</title>
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-        
+<nav class="navbar navbar-dark bg-dark">
+
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
             <a href="" style="color: black;"></a>
             <a class="nav-link" href="#">Home </a>
-          </li>
-        
+        </li>
+
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Mascotas </a>
-            
-          </li>
+
+        </li>
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Servicios </a>
-            
-          </li>
+
+        </li>
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Clientes_Mascotas </a>
-            
-          </li>
+
+        </li>
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Mascotas_veterinario </a>
-            
-          </li>
+
+        </li>
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Facturas_clientes </a>
-            
-          </li>
+
+        </li>
     </ul>
     <ul>
         <li class="nav-item active">
             <a class="nav-link" href="/allMascotas">Prodctos </a>
-            
-          </li>
+
+        </li>
     </ul>
 
 </nav>
-    <br>
-    <br>
-    <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">nombre</th>
-            <th scope="col">Fecha Nacimiento</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="Especialidad: ${especialidades}">
-            <th scope="row" th:text="${Especialidad.id}"></th>
-            <td ></td>
-            <td th:text="${Especialidad.nombre}"></td>
-            <td ></td>
-          </tr>
+<br>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">nombre</th>
+        <th scope="col">Fecha Nacimiento</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Especialidad: ${especialidades}">
+        <th scope="row" th:text="${Especialidad.id}"></th>
+        <td ></td>
+        <td th:text="${Especialidad.nombre}"></td>
+        <td ></td>
+    </tr>
 
-        </tbody>
-      </table>
+    </tbody>
+</table>
 </body>
 </html>

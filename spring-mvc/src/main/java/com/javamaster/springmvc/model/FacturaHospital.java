@@ -25,26 +25,27 @@ public class FacturaHospital extends BaseEntity implements Factura {
 
 	}
 
+	// devulve las fecha
 	public Date getFecha() {
 		return fecha;
 	}
-
+// setea la fecha
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
+// devuelve el cliente
 	public Cliente getCliente() {
 		return cliente;
 	}
-
+// setea el cliente
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
+// devuelve los servicios
 	public Set<Servicio> getServicios() {
 		return servicios;
 	}
-
+// setea los servicios
 	public void setServicios(Set<Servicio> servicios) {
 		this.servicios = servicios;
 	}

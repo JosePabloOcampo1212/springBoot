@@ -37,6 +37,8 @@ public class ProductoComprado extends BaseEntity {
 		return fecha;
 	}
 
+	// geteer y setter de los productos comprados
+
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}

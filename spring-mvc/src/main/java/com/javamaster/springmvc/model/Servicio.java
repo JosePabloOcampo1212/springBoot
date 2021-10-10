@@ -35,6 +35,7 @@ public class Servicio extends BaseEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.EAGER)
 	private Set<ProductoComprado> productoComprados;
 
+// getters y setter de servicos
 	public Date getFecha() {
 		return fecha;
 	}
