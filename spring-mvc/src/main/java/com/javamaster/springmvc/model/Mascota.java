@@ -1,57 +1,59 @@
 package com.javamaster.springmvc.model;
 
-public class Mascota {
-    private int id;
-    private Expediente expediente;
-    private String tipo;
-    private String nombre;
-    private String fecha_nacimento;
 
-    public Mascota(int id, Expediente expediente, String tipo, String nombre, String fecha_nacimento) {
-        this.id = id;
-        this.expediente = expediente;
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.fecha_nacimento = fecha_nacimento;
-    }
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+import java.util.Set;
 
-    public int getId() {
-        return id;
-    }
+@Table(name = "mascota")
+@Entity
+public class Mascota extends EntidadNombrada {
 
-    public Expediente getExpediente() {
-        return expediente;
-    }
+	@Column(name = "tipo")
+	@NotEmpty
+	private String tipo;
 
-    public String getTipo() {
-        return tipo;
-    }
+	@Column(name = "fecha_de_nacimiento")
+	@NotEmpty
+	private Date fechaDeNacimiento;
 
-    public String getNombre() {
-        return nombre;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "mascota", fetch = FetchType.EAGER)
+	private Set<Expediente> expedientes;
 
-    public String getFecha_nacimento() {
-        return fecha_nacimento;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id")
+	private Hospital cliente;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public String getTipo() {
+		return tipo;
+	}
 
-    public void setExpediente(Expediente expediente) {
-        this.expediente = expediente;
-    }
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public Date getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
 
-    public void setFecha_nacimento(String fecha_nacimento) {
-        this.fecha_nacimento = fecha_nacimento;
-    }
+	public Set<Expediente> getExpedientes() {
+		return expedientes;
+	}
+
+	public void setExpedientes(Set<Expediente> expedientes) {
+		this.expedientes = expedientes;
+	}
+
+	public Hospital getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Hospital cliente) {
+		this.cliente = cliente;
+	}
 }

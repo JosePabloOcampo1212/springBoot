@@ -1,39 +1,44 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.Set;
 
-public class Expediente {
-    private int id;
-    private ArrayList<Servicio> servicios;
-    private ArrayList<ProductoComprado> productoComprado;
+@Table(name = "expediente")
+@Entity
+public class Expediente extends BaseEntity {
 
-    public Expediente(int id, ArrayList<Servicio> servicios, ArrayList<ProductoComprado> productoComprado) {
-        this.id = id;
-        this.servicios = servicios;
-        this.productoComprado = productoComprado;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "mascota_id")
+	private Mascota mascota;
 
-    public int getId() {
-        return id;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "expediente", fetch = FetchType.EAGER)
+	private Set<Servicio> servicios;
 
-    public ArrayList<Servicio> getServicios() {
-        return servicios;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "expediente", fetch = FetchType.EAGER)
+	private Set<ProductoComprado> productoComprados;
 
-    public ArrayList<ProductoComprado> getProductoComprado() {
-        return productoComprado;
-    }
+	public Mascota getMascota() {
+		return mascota;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setMascota(Mascota mascota) {
+		this.mascota = mascota;
+	}
 
-    public void setServicios(ArrayList<Servicio> servicios) {
-        this.servicios = servicios;
-    }
+	public Set<Servicio> getServicios() {
+		return servicios;
+	}
 
-    public void setProductoComprados(ArrayList<ProductoComprado> productoComprado) {
-        this.productoComprado = productoComprado;
-    }
+	public void setServicios(Set<Servicio> servicios) {
+		this.servicios = servicios;
+	}
+
+	public Set<ProductoComprado> getProductoComprados() {
+		return productoComprados;
+	}
+
+	public void setProductoComprados(Set<ProductoComprado> productoComprados) {
+		this.productoComprados = productoComprados;
+	}
 }
+

@@ -1,29 +1,33 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
 
-public class Tienda {
-    private int id;
-    private ArrayList<Producto> productos;
 
-    public Tienda(int id, ArrayList<Producto> productos) {
-        this.id = id;
-        this.productos = productos;
-    }
+import javax.persistence.*;
+import java.util.Set;
 
-    public int getId() {
-        return id;
-    }
+@Table(name = "tienda")
+@Entity
 
-    public ArrayList<Producto> getProductos() {
-        return productos;
-    }
+public class Tienda extends BaseEntity {
+	@OneToOne(fetch= FetchType.LAZY, mappedBy="tienda")
+	private Hospital hospital;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tienda", fetch = FetchType.EAGER)
+	private Set<Producto> productos;
 
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
-    }
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+
+	public Set<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(Set<Producto> productos) {
+		this.productos = productos;
+	}
 }

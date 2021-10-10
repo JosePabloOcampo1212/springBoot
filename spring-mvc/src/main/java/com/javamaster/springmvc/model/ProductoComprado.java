@@ -1,47 +1,83 @@
 package com.javamaster.springmvc.model;
 
-public class ProductoComprado {
-    private int id;
-    private String fecha;
-    private Producto producto;
-    private int cantidad;
 
-    public ProductoComprado(int id, String fecha, Producto producto, int cantidad) {
-        this.id = id;
-        this.fecha = fecha;
-        this.producto = producto;
-        this.cantidad = cantidad;
-    }
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
-    public int getId() {
-        return id;
-    }
+@Table(name = "producto_comprado")
+@Entity
+public class ProductoComprado extends BaseEntity {
 
-    public String getFecha() {
-        return fecha;
-    }
+	@Column(name = "fecha")
+	@NotEmpty
+	private Date fecha;
 
-    public Producto getProducto() {
-        return producto;
-    }
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="producto_id")
+	private Producto producto;
 
-    public int getCantidad() {
-        return cantidad;
-    }
+	@Column(name = "cantidad")
+	@NotEmpty
+	private int cantidad;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "servicio_id")
+	private Servicio servicio;
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "factura_tienda_id")
+	private  FacturaTienda facturaTienda;
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "expediente_id")
+	private Expediente expediente;
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public Servicio getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
+
+	public FacturaTienda getFacturaTienda() {
+		return facturaTienda;
+	}
+
+	public void setFacturaTienda(FacturaTienda facturaTienda) {
+		this.facturaTienda = facturaTienda;
+	}
+
+	public Expediente getExpediente() {
+		return expediente;
+	}
+
+	public void setExpediente(Expediente expediente) {
+		this.expediente = expediente;
+	}
 }

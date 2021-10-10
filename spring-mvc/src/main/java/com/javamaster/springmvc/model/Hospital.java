@@ -1,51 +1,42 @@
 package com.javamaster.springmvc.model;
+import javax.persistence.*;
+import java.util.Set;
 
-import java.util.ArrayList;
+@Table(name = "hospital")
+@Entity
+public class Hospital extends BaseEntity {
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="tienda_id")
+	private Tienda tienda;
 
-public class Hospital {
-    private int id;
-    private Tienda tienda;
-    private ArrayList<Cliente> cliesntes;
-    private ArrayList<Veterinario> veterinarios;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hospital", fetch = FetchType.EAGER)
+	private Set<Cliente> clientes;
 
-    public Hospital(int id, Tienda tienda, ArrayList<Cliente> cliesntes, ArrayList<Veterinario> veterinarios) {
-        this.id = id;
-        this.tienda = tienda;
-        this.cliesntes = cliesntes;
-        this.veterinarios = veterinarios;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hospital", fetch = FetchType.EAGER)
+	private Set<Veterinario> veterinarios;
 
-    public int getId() {
-        return id;
-    }
+	public Tienda getTienda() {
+		return tienda;
+	}
 
-    public Tienda getTienda() {
-        return tienda;
-    }
+	public void setTienda(Tienda tienda) {
+		this.tienda = tienda;
+	}
 
-    public ArrayList<Cliente> getCliesntes() {
-        return cliesntes;
-    }
+	public Set<Cliente> getClientes() {
+		return clientes;
+	}
 
-    public ArrayList<Veterinario> getVeterinarios() {
-        return veterinarios;
-    }
+	public void setClientes(Set<Cliente> clientes) {
+		this.clientes = clientes;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Set<Veterinario> getVeterinarios() {
+		return veterinarios;
+	}
 
-    public void setTienda(Tienda tienda) {
-        this.tienda = tienda;
-    }
-
-    public void setCliesntes(ArrayList<Cliente> cliesntes) {
-        this.cliesntes = cliesntes;
-    }
-
-    public void setVeterinarios(ArrayList<Veterinario> veterinarios) {
-        this.veterinarios = veterinarios;
-    }
-
-
+	public void setVeterinarios(Set<Veterinario> veterinarios) {
+		this.veterinarios = veterinarios;
+	}
 }
+

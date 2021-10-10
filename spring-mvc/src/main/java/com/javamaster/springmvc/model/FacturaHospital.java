@@ -1,64 +1,51 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+import java.util.Set;
 
-public class FacturaHospital implements Factura{
-    private int id;
-    private int idHospital;
-    private String fecha;
-    private ArrayList<ProductoComprado> productoComprados;
-    private ArrayList<Servicio> servicios;
+@Table(name = "factura_hospital")
+@Entity
+public class FacturaHospital extends BaseEntity implements Factura {
 
-    public FacturaHospital(int id, int idHospital, String fecha) {
-        this.id = id;
-        this.idHospital = idHospital;
-        this.fecha = fecha;
-        this.productoComprados = new ArrayList<>();
-        this.servicios = new ArrayList<>();
-    }
+	@Column(name = "fecha")
+	@NotEmpty
+	private Date fecha;
 
-    public int getId() {
-        return id;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
 
-    public int getIdHospital() {
-        return idHospital;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaHospital", fetch = FetchType.EAGER)
+	private Set<Servicio> servicios;
 
-    public String getFecha() {
-        return fecha;
-    }
+	@Override
+	public void facturar() {
 
-    public ArrayList<ProductoComprado> getProductoComprados() {
-        return productoComprados;
-    }
+	}
 
-    public ArrayList<Servicio> getServicios() {
-        return servicios;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setIdHospital(int idHospital) {
-        this.idHospital = idHospital;
-    }
+	public Cliente getCliente() {
+		return cliente;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
-    public void setProductoComprados(ArrayList<ProductoComprado> productoComprados) {
-        this.productoComprados = productoComprados;
-    }
+	public Set<Servicio> getServicios() {
+		return servicios;
+	}
 
-    public void setServicios(ArrayList<Servicio> servicios) {
-        this.servicios = servicios;
-    }
-
-    @Override
-    public void pago() {
-
-    }
+	public void setServicios(Set<Servicio> servicios) {
+		this.servicios = servicios;
+	}
 }

@@ -1,45 +1,55 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.Set;
 
-public class Cliente extends Persona{
-    private ArrayList<Mascota> mascotas;
-    private ArrayList<Factura> facturaTienda;
-    private ArrayList<Factura> facturaHospital;
+@Table(name = "cliente")
+@Entity
 
+public class Cliente extends Persona {
 
-    public Cliente(int cedula, String nombre, String apellido1, String apellido2, String direccion, String telefono) {
-        super(cedula, nombre, apellido1, apellido2, direccion, telefono);
-        this.mascotas=new ArrayList<Mascota>();
-        this.facturaTienda = new ArrayList<Factura>();
-        this.facturaHospital = new ArrayList<Factura>();
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "hospital_id")
+	private Hospital hospital;
 
-    public ArrayList<Mascota> getMascotas() {
-        return mascotas;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.EAGER)
+	private Set<Mascota> mascotas;
 
-    public ArrayList<Factura> getFacturas() {
-        return facturaTienda;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.EAGER)
+	private Set<FacturaTienda> facturasTiendas;
 
-    public ArrayList<Factura> getFacturaTienda() {
-        return facturaTienda;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.EAGER)
+	private Set<FacturaHospital> facturasHospital;
 
-    public ArrayList<Factura> getFacturaHospital() {
-        return facturaHospital;
-    }
+	public Hospital getHospital() {
+		return hospital;
+	}
 
-    public void setMascotas(ArrayList<Mascota> mascotas) {
-        this.mascotas = mascotas;
-    }
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
 
-    public void setFacturaTienda(ArrayList<Factura> facturaTienda) {
-        this.facturaTienda = facturaTienda;
-    }
+	public Set<Mascota> getMascotas() {
+		return mascotas;
+	}
 
-    public void setFacturaHospital(ArrayList<Factura> facturaHospital) {
-        this.facturaHospital = facturaHospital;
-    }
+	public void setMascotas(Set<Mascota> mascotas) {
+		this.mascotas = mascotas;
+	}
+
+	public Set<FacturaTienda> getFacturasTiendas() {
+		return facturasTiendas;
+	}
+
+	public void setFacturasTiendas(Set<FacturaTienda> facturasTiendas) {
+		this.facturasTiendas = facturasTiendas;
+	}
+
+	public Set<FacturaHospital> getFacturasHospital() {
+		return facturasHospital;
+	}
+
+	public void setFacturasHospital(Set<FacturaHospital> facturasHospital) {
+		this.facturasHospital = facturasHospital;
+	}
 }

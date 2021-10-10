@@ -1,27 +1,10 @@
 package com.javamaster.springmvc.model;
 
-public class Especialidad {
-    private int id;
-    private String nombre;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-    public Especialidad(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+@Table(name = "especialidad")
+@Entity
+public class Especialidad extends EntidadNombrada{
 
-    public int getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }

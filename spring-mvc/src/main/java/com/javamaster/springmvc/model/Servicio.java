@@ -1,59 +1,85 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
 
-public class Servicio {
-    private int id;
-    private String fecha;
-    private String descripcion;
-    private Veterinario veterinario;
-    private ArrayList<String> medicamentos_aplicados;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+import java.util.Set;
 
-    public Servicio(int id, String fecha, String descripcion, Veterinario veterinario, ArrayList<String> medicamentos_aplicados) {
-        this.id = id;
-        this.fecha = fecha;
-        this.descripcion = descripcion;
-        this.veterinario = veterinario;
-        this.medicamentos_aplicados = medicamentos_aplicados;
-    }
+@Table(name = "servicio")
+@Entity
 
-    public int getId() {
-        return id;
-    }
+public class Servicio extends BaseEntity {
 
-    public String getFecha() {
-        return fecha;
-    }
+	@Column(name = "fecha")
+	@NotEmpty
+	private Date fecha;
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	@Column(name = "descripcion")
+	@NotEmpty
+	private String descripcion;
 
-    public Veterinario getVeterinario() {
-        return veterinario;
-    }
 
-    public ArrayList<String> getMedicamentos_aplicados() {
-        return medicamentos_aplicados;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "veterinario_id")
+	private Veterinario veterinario;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "expediente_id")
+	private Expediente expediente;
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "factura_hospital_id")
+	private FacturaHospital facturaHospital;
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.EAGER)
+	private Set<ProductoComprado> productoComprados;
 
-    public void setVeterinario(Veterinario veterinario) {
-        this.veterinario = veterinario;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public void setMedicamentos_aplicados(ArrayList<String> medicamentos_aplicados) {
-        this.medicamentos_aplicados = medicamentos_aplicados;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public Veterinario getVeterinario() {
+		return veterinario;
+	}
+
+	public void setVeterinario(Veterinario veterinario) {
+		this.veterinario = veterinario;
+	}
+
+	public Expediente getExpediente() {
+		return expediente;
+	}
+
+	public void setExpediente(Expediente expediente) {
+		this.expediente = expediente;
+	}
+
+	public FacturaHospital getFacturaHospital() {
+		return facturaHospital;
+	}
+
+	public void setFacturaHospital(FacturaHospital facturaHospital) {
+		this.facturaHospital = facturaHospital;
+	}
+
+	public Set<ProductoComprado> getProductoComprados() {
+		return productoComprados;
+	}
+
+	public void setProductoComprados(Set<ProductoComprado> productoComprados) {
+		this.productoComprados = productoComprados;
+	}
 }

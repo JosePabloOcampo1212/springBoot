@@ -1,44 +1,52 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+import java.util.Set;
 
-public class FacturaTienda implements Factura {
-    private int id;
-    private String fecha;
-    private ArrayList<ProductoComprado> productoComprados;
+@Table(name = "factura_tienda")
+@Entity
+public class FacturaTienda extends BaseEntity implements Factura {
 
-    public FacturaTienda(int id, String fecha) {
-        this.id = id;
-        this.fecha = fecha;
-        this.productoComprados = new ArrayList<>();
-    }
 
-    public int getId() {
-        return id;
-    }
+	@Column(name = "fecha")
+	@NotEmpty
+	private Date fecha;
 
-    public String getFecha() {
-        return fecha;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaTienda", fetch = FetchType.EAGER)
+	private Set<ProductoComprado> productoComprados;
 
-    public ArrayList<ProductoComprado> getProductoComprados() {
-        return productoComprados;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	@Override
+	public void facturar() {
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	}
 
-    public void setProductoComprados(ArrayList<ProductoComprado> productoComprados) {
-        this.productoComprados = productoComprados;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    @Override
-    public void pago() {
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    }
+	public Set<ProductoComprado> getProductoComprados() {
+		return productoComprados;
+	}
+
+	public void setProductoComprados(Set<ProductoComprado> productoComprados) {
+		this.productoComprados = productoComprados;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 }

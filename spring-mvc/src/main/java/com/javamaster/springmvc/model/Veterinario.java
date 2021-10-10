@@ -1,40 +1,45 @@
 package com.javamaster.springmvc.model;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.util.Set;
 
+@Table(name = "veterinario")
+@Entity
 public class Veterinario extends Persona{
-    private int id;
-    private ArrayList<Especialidad> especialidades;
-    private Horario horario;
 
-    public Veterinario(int id, int cedula, String nombre, String apellido1, String apellido2, String direccion, String telefono, Horario horario) {
-        super(cedula, nombre, apellido1, apellido2, direccion, telefono);
-        this.id = id;
-        this.especialidades = new ArrayList<Especialidad>();
-        this.horario = horario;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "hospital_id")
+	private Hospital hospital;
 
-    public int getId() {
-        return id;
-    }
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "veterinario_especialidad", joinColumns = @JoinColumn(name = "veterinario_id"),
+		inverseJoinColumns = @JoinColumn(name = "especialidad_id"))
+	private Set<Especialidad> especialidades;
 
-    public ArrayList<Especialidad> getEspecialidades() {
-        return especialidades;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinario", fetch = FetchType.EAGER)
+	private Set<Horario> horarios;
 
-    public Horario getHorario() {
-        return horario;
-    }
+	public Hospital getHospital() {
+		return hospital;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
 
-    public void setEspecialidades(ArrayList<Especialidad> especialidades) {
-        this.especialidades = especialidades;
-    }
+	public Set<Especialidad> getEspecialidades() {
+		return especialidades;
+	}
 
-    public void setHorario(Horario horario) {
-        this.horario = horario;
-    }
+	public void setEspecialidades(Set<Especialidad> especialidades) {
+		this.especialidades = especialidades;
+	}
+
+	public Set<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(Set<Horario> horarios) {
+		this.horarios = horarios;
+	}
 }
