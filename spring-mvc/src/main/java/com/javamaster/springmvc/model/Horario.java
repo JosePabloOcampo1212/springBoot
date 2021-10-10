@@ -20,7 +20,7 @@ public class Horario extends BaseEntity{
 	private String diasLaborales;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "veterinario_id")
+	@JoinColumn(name = "veterinario_id",insertable=false, updatable=false)
 	private Veterinario veterinario;
 
 	public String getHoraInicio() {

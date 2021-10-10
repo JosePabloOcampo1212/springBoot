@@ -21,15 +21,15 @@ public class Servicio extends BaseEntity {
 
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "veterinario_id")
+	@JoinColumn(name = "veterinario_id",insertable=false, updatable=false)
 	private Veterinario veterinario;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "expediente_id")
+	@JoinColumn(name = "expediente_id", insertable=false, updatable=false)
 	private Expediente expediente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "factura_hospital_id")
+	@JoinColumn(name = "factura_hospital_id", insertable=false, updatable=false)
 	private FacturaHospital facturaHospital;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicio", fetch = FetchType.EAGER)

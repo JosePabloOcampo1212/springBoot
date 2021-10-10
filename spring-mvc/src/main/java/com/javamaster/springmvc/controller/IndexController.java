@@ -1,7 +1,10 @@
 package com.javamaster.springmvc.controller;
 
-import com.javamaster.springmvc.model.Masco;
+import com.javamaster.springmvc.imp.EspecialidadImp;
+import com.javamaster.springmvc.model.Especialidad;
+
 import com.javamaster.springmvc.model.Mascota;
+import com.javamaster.springmvc.repository.MascotaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +23,11 @@ public class IndexController {
 //        return "mascotas";
 //    }
 
-    @RequestMapping("/allMascotas")
+    @RequestMapping("/allEspecialiades")
     public String listMascotas(Model model){
-        ArrayList<Masco> mascos = new ArrayList<>();
-        mascos.add(new Masco(1,"perro","xecec","1212122"));
-        mascos.add(new Masco(3,"gato","xeccecfec","1212122"));
-        model.addAttribute("mascotas",mascos);
+        EspecialidadImp especialidadImp = new EspecialidadImp();
+        List<Especialidad> especialidades = especialidadImp.findAll();
+        model.addAttribute("especialidades",especialidades);
         return "mascotas";
     }
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 public class Expediente extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "mascota_id")
+	@JoinColumn(name = "mascota_id", insertable=false, updatable=false)
 	private Mascota mascota;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "expediente", fetch = FetchType.EAGER)

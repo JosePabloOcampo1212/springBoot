@@ -18,7 +18,7 @@ public class FacturaTienda extends BaseEntity implements Factura {
 	private Set<ProductoComprado> productoComprados;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "cliente_id", insertable=false, updatable=false)
 	private Cliente cliente;
 
 	@Override

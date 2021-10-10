@@ -14,7 +14,7 @@ public class ProductoComprado extends BaseEntity {
 	private Date fecha;
 
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="producto_id")
+	@JoinColumn(name="producto_id", insertable=false, updatable=false)
 	private Producto producto;
 
 	@Column(name = "cantidad")
@@ -22,15 +22,15 @@ public class ProductoComprado extends BaseEntity {
 	private int cantidad;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "servicio_id")
+	@JoinColumn(name = "servicio_id", insertable=false, updatable=false)
 	private Servicio servicio;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "factura_tienda_id")
+	@JoinColumn(name = "factura_tienda_id", insertable=false, updatable=false)
 	private  FacturaTienda facturaTienda;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "expediente_id")
+	@JoinColumn(name = "expediente_id", insertable=false, updatable=false)
 	private Expediente expediente;
 
 	public Date getFecha() {

@@ -8,12 +8,12 @@ import java.util.Set;
 public class Veterinario extends Persona{
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hospital_id")
+	@JoinColumn(name = "hospital_id", insertable=false, updatable=false)
 	private Hospital hospital;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "veterinario_especialidad", joinColumns = @JoinColumn(name = "veterinario_id"),
-		inverseJoinColumns = @JoinColumn(name = "especialidad_id"))
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "veterinario_especialidad", joinColumns = @JoinColumn(name = "veterinario_id", insertable=false, updatable=false),
+		inverseJoinColumns = @JoinColumn(name = "especialidad_id", insertable=false, updatable=false))
 	private Set<Especialidad> especialidades;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinario", fetch = FetchType.EAGER)

@@ -14,7 +14,7 @@ public class Producto extends EntidadNombrada {
 	private int cantidadEnExistencia;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "tienda_id")
+	@JoinColumn(name = "tienda_id", insertable=false, updatable=false)
 	private Tienda tienda;
 }
 

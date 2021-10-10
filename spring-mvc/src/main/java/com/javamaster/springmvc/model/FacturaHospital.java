@@ -14,7 +14,7 @@ public class FacturaHospital extends BaseEntity implements Factura {
 	private Date fecha;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "cliente_id", insertable=false, updatable=false)
 	private Cliente cliente;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaHospital", fetch = FetchType.EAGER)

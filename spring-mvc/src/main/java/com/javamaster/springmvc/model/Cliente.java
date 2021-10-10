@@ -9,7 +9,7 @@ import java.util.Set;
 public class Cliente extends Persona {
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "hospital_id")
+	@JoinColumn(name = "hospital_id", insertable=false, updatable=false)
 	private Hospital hospital;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.EAGER)

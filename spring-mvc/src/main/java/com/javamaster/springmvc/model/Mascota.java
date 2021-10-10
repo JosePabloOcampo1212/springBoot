@@ -22,7 +22,7 @@ public class Mascota extends EntidadNombrada {
 	private Set<Expediente> expedientes;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "cliente_id", insertable=false, updatable=false)
 	private Hospital cliente;
 
 	public String getTipo() {
