@@ -11,8 +11,8 @@ import java.util.List;
 @Entity
 @Data
 public class Especialidad extends EntidadNombrada{
-   /*@ManyToMany(mappedBy="especialidades")
-    private List<Veterinario> veterinarios;*/
+    @ManyToMany(mappedBy="especialidades")
+    private List<Veterinario> veterinarios;
 
     @Override
     public Integer getId() {

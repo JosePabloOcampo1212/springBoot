@@ -8,8 +8,7 @@ import java.util.Set;
 @Entity
 @Data
 public class Hospital extends BaseEntity {
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="tienda_id", insertable=false, updatable=false)
+	@OneToOne(fetch= FetchType.LAZY, mappedBy="hospital")
 	private Tienda tienda;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hospital", fetch = FetchType.EAGER)

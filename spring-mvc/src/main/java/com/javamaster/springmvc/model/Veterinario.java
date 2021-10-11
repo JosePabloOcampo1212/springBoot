@@ -14,10 +14,10 @@ public class Veterinario extends Persona{
 	@JoinColumn(name = "hospital_id", insertable=false, updatable=false)
 	private Hospital hospital;
 
-	/*@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "veterinario_especialidad", joinColumns = @JoinColumn(name = "veterinario_id", insertable=false, updatable=false),
 		inverseJoinColumns = @JoinColumn(name = "especialidad_id", insertable=false, updatable=false))
-	private Set<Especialidad> especialidades;*/
+	private Set<Especialidad> especialidades;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "veterinario", fetch = FetchType.EAGER)
 	private Set<Horario> horarios;

@@ -11,8 +11,10 @@ import java.util.Set;
 @Entity
 @Data
 public class Tienda extends BaseEntity {
-	@OneToOne(fetch= FetchType.LAZY, mappedBy="tienda")
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="hospital_id", insertable=false, updatable=false)
 	private Hospital hospital;
+
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tienda", fetch = FetchType.EAGER)
 	private Set<Producto> productos;
